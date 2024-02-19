@@ -158,3 +158,21 @@ Sub SET_Calendario()
         Selection.Borders(xlInsideVertical).LineStyle = xlNone
         Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
     End Sub
+
+    Sub Cria_Dados_Rentagulos(cellPositionX As Double, cellPositionY As Double, celWidht As Double, celHeight As Double, _
+      descricao As String, gap As Integer, qtdSemana As Integer)
+          
+          
+          'Argumentos (tipoGeometrico, x, y, largura, altura)
+          ActiveSheet.Shapes.AddShape(msoShapeRoundedRectangle, _
+              cellPositionX + 2, _
+              cellPositionY + gap, _
+              celWidht * qtdSemana, _
+              celHeight / 7).Select
+          Selection.ShapeRange.ScaleWidth 5.25, msoScaleFromTopLeft
+          Selection.ShapeRange.ShapeStyle = msoShapeStylePreset12
+          Selection.ShapeRange(1).TextFrame2.TextRange.Characters.Text = descricao
+          
+      End Sub
+
+
